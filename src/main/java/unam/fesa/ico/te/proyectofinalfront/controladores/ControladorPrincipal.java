@@ -8,41 +8,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
-@RequestMapping("/serviciosocial/")
+@RequestMapping("/serviciosocial") // Se quitó la barra final para evitar conflictos de rutas
 public class ControladorPrincipal {
 
-    @GetMapping ("/pag_inicio/")
+    @GetMapping("/pag_inicio") // Se quitó la barra final
     public String muestraInicio(){
         return "pag_inicio";
     }
 
-
     @GetMapping("/login/admin")
     public String mostrarLoginAdmin() {
-        return "login_admin"; // Llama al archivo HTML
+        return "login_admin";
     }
 
-    // 3. Procesar los datos del formulario (Mocking)
     @PostMapping("/login/admin")
     public String procesarLoginAdmin(
             @RequestParam("usuario") String usuario,
             @RequestParam("password") String password,
             Model model) {
 
-        // Simulamos la validación que en el futuro hará el Backend
+        // Simulación de validación
         if ("admin".equals(usuario) && "12345".equals(password)) {
-            // Si es correcto, simula llevarlo a su panel de control
-            return "redirect:/serviciosocial/dashboard/admin";
+            // CORRECCIÓN: Redirige al controlador "ControladorAdmin" que creamos antes
+            return "redirect:/administrador/dashboard";
         } else {
-            // Si es incorrecto, inyectamos el mensaje de error y recargamos el form
             model.addAttribute("error", "Credenciales incorrectas. Verifica tu usuario y contraseña.");
             return "login_admin";
         }
     }
 
-    @GetMapping("/dashboard/admin")
-    public String dashboardTemporalAdmin() {
-        return "pag_inicio"; // Por ahora lo regresamos al inicio simulando que entró
-    }
+    // El método GET de dashboard temporal se puede eliminar,
+    // ya que ControladorAdmin se encargará de esa ruta de aquí en adelante.
 }
-
