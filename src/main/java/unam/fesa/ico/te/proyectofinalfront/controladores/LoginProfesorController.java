@@ -13,18 +13,21 @@ public class LoginProfesorController {
         return "login-profesor";
     }
 
+    @GetMapping("/dashboard-profesor")
+    public String dashboardProfesor() {
+        return "dashboard-profesor";
+    }
+
     @PostMapping("/login-profesor")
     public String procesarLoginProfesor(@RequestParam String correo,
                                         @RequestParam String password,
                                         Model model) {
 
         if(correo.equals("profesor@unam.mx") && password.equals("1234")) {
-
-            model.addAttribute("mensaje", "Login exitoso");
-            return "login-profesor";
-
+            //  Si las credenciales son correctas, mostrar el dashboard
+            return "dashboard-profesor";
         } else {
-
+            //  Si son incorrectas, regresar al login con mensaje de error
             model.addAttribute("error", "Credenciales inválidas");
             return "login-profesor";
         }
