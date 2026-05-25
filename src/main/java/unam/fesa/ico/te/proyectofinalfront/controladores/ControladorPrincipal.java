@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/serviciosocial") // Se quitó la barra final para evitar conflictos de rutas
-public class    ControladorPrincipal {
+public class ControladorPrincipal {
 
     @GetMapping("/pag_inicio") // Se quitó la barra final
     public String muestraInicio(){
