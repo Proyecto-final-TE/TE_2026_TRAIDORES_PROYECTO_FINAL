@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Profesor</title>
+    <link rel="stylesheet" th:href="@{/css/base.css}">
+</head>
+<body>
+<div th:replace="fragments/header :: header"></div>
+
+<main>
+    <h1>Panel del Profesor</h1>
+    <p>Bienvenido al panel de control. Aquí se mostrarán los programas asignados y el avance de los alumnos.</p>
+
+    <!-- Contenedor para tabla de alumnos -->
+    <section>
+        <h2>Listado de alumnos por programa</h2>
+        <table>
+            <thead>
+            <tr>
+                <th>Alumno</th>
+                <th>Programa</th>
+                <th>Horas acumuladas</th>
+                <th>Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Datos dummy por ahora -->
+            <tr>
+                <td>Juan Pérez</td>
+                <td>Programa A</td>
+                <td>80</td>
+                <td>En progreso</td>
+            </tr>
+            </tbody>
+        </table>
+    </section>
+</main>
+
+<div th:replace="fragments/footer :: footer"></div>
+</body>
+</html>
