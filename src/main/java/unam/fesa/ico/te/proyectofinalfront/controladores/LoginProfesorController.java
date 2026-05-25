@@ -8,26 +8,23 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/serviciosocial")
 public class LoginProfesorController {
 
-    @GetMapping("/login-profesor")
+    @GetMapping("/login/profesor")
     public String mostrarLoginProfesor(){
         return "login-profesor";
     }
 
-    @GetMapping("/dashboard-profesor")
-    public String dashboardProfesor() {
-        return "dashboard-profesor";
-    }
-
-    @PostMapping("/login-profesor")
+    @PostMapping("/login/profesor")
     public String procesarLoginProfesor(@RequestParam String correo,
                                         @RequestParam String password,
                                         Model model) {
 
         if(correo.equals("profesor@unam.mx") && password.equals("1234")) {
-            //  Si las credenciales son correctas, mostrar el dashboard
-            return "dashboard-profesor";
+
+            model.addAttribute("mensaje", "Login exitoso");
+            return "login-profesor";
+
         } else {
-            //  Si son incorrectas, regresar al login con mensaje de error
+
             model.addAttribute("error", "Credenciales inválidas");
             return "login-profesor";
         }

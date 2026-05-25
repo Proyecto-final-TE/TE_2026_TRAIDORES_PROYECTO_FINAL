@@ -108,8 +108,7 @@
 <div class="topbar">
 
     <div class="container d-flex justify-content-between align-items-center">
-
-        <a href="/serviciosocial/pag_inicio/">
+        <a th:href="@{/serviciosocial/pag_inicio}">
             <i class="bi bi-arrow-left-circle-fill"></i>
             Volver al inicio
         </a>
@@ -160,7 +159,7 @@
             </div>
 
             <!-- Formulario -->
-            <form th:action="@{/serviciosocial/login-profesor}" method="post">
+            <form th:action="@{/serviciosocial/login/profesor}" method="post">
 
                 <!-- Correo -->
                 <div class="mb-3">
