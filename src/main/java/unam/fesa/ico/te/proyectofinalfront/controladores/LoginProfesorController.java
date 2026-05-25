@@ -18,13 +18,11 @@ public class LoginProfesorController {
                                         @RequestParam String password,
                                         Model model) {
 
+        // Lógica que armó tu compañero en el feature
         if(correo.equals("profesor@unam.mx") && password.equals("1234")) {
-
             model.addAttribute("mensaje", "Login exitoso");
             return "login-profesor";
-
         } else {
-
             model.addAttribute("error", "Credenciales inválidas");
             return "login-profesor";
         }
