@@ -11,33 +11,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/serviciosocial")
 public class LoginProfesorController {
 
-    // 1. Muestra la pantalla del login al darle clic en la página de inicio
+    // 1. Muestra la pantalla del login
     @GetMapping("/login/profesor")
     public String mostrarLoginProfesor(){
         return "login-profesor";
     }
 
-    // 2. Procesa los datos cuando le das al botón de "Ingresar al Sistema"
+    // 2. Procesa los datos del login
     @PostMapping("/login/profesor")
     public String procesarLoginProfesor(@RequestParam String correo,
                                         @RequestParam String password,
                                         Model model) {
 
-        // Validamos las credenciales (ahorita están quemadas, luego las ligan a la BD)
+        // Validamos las credenciales (dummy, luego se conecta a BD)
         if(correo.equals("profesor@unam.mx") && password.equals("1234")) {
-            // ¡AQUÍ ESTÁ LA MAGIA! Si es correcto, lo pateamos a la ruta del dashboard
+            // Si es correcto, redirige al dashboard
             return "redirect:/serviciosocial/dashboard/profesor";
         } else {
-            // Si se equivoca, le regresamos el error en la misma pantalla
+            // Si es incorrecto, regresa error en la misma pantalla
             model.addAttribute("error", "Credenciales inválidas. Verifica tu correo o contraseña.");
             return "login-profesor";
         }
     }
 
-    // 3. NUEVO MÉTODO: La llave que abre el dashboard
+    // 3. Método para mostrar el dashboard
     @GetMapping("/dashboard/profesor")
     public String mostrarDashboardProfesor() {
-        // Esto le dice a Spring Boot que pinte tu archivo "dashboard-profesor.html"
         return "dashboard-profesor";
     }
 }
